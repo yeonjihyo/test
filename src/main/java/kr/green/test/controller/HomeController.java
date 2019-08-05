@@ -29,7 +29,6 @@ public class HomeController {
 //		System.out.println(mVo); //db와 연동이 잘 되었는지 체크 
 		
 	    mv.setViewName("/main/home");
-	    mv.addObject("setHeader", "타일즈");
 	    return mv;
 	}
 	@RequestMapping(value= "/",method=RequestMethod.POST)
