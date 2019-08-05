@@ -1,5 +1,6 @@
 package kr.green.test.vo;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class BoardVO {
@@ -47,10 +48,17 @@ public class BoardVO {
 	public void setFile(String file) {
 		this.file = file;
 	}
-	public Date getRegistered() {
-		return registered;
+	public String getRegistered() {
+		//날자와 시간을 원하는 형식으로 보이게 하기위한 방법
+		SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		return f.format(registered);
 	}
-	public void setRegistered(Date registered) {
+	public String getRegisteredUntilDay() {//컨트롤러에서 jsp로 보낼때는 getter가 호출 
+		//날자와 시간을 원하는 형식으로 보이게 하기위한 방법
+		SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+		return f.format(registered);
+	}
+	public void setRegistered(Date registered) {//jsp에서 컨트롤러로 보낼때 setter가 호출 
 		this.registered = registered;
 	}
 	public int getViews() {

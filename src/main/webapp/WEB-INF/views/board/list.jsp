@@ -20,7 +20,7 @@
 				        <td>${board.num}</td>
 				        <td><a href="<%=request.getContextPath()%>/display?num=${board.num}">${board.title}</a></td>
 				        <td>${board.writer}</td>
-				        <td>${board.registered}</td>
+				        <td>${board.registered}</td><!-- <td>${board.registeredUntilDay}</td> 날자만나오게하고싶으면 이렇게 호출하면됨  -->
 				        <td>${board.views}</td>
 			      	</tr>
 		      	</c:forEach>

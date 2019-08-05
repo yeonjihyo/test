@@ -4,6 +4,26 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.green.test.dao.BoardDAO">
   <select id="selectBoardList" resultType="kr.green.test.vo.BoardVO">
-    select * from board where valid = 'I'
+    select * from board where 
+    <choose>
+   		<when test='valid.equals("I") ||valid.equals("D")'> 
+   			valid=#{valid}
+   		</when>
+    	<otherwise>
+    		valid='I' or valid='D'
+   		</otherwise>
+    </choose>
+    order by num desc limit #{cri.pageStart},#{cri.perPageNum}<!-- dao에서 param이 붙었기 때문에 앞에 cri.가 붙어야 함  -->
+  </select>
+  <select id="selectCountBoardList" resultType="int">
+    select count(*) from board where 
+    <choose>
+   		<when test='valid.equals("I") ||valid.equals("D")'> 
+   			valid=#{valid}
+   		</when>
+    	<otherwise>
+    		valid='I' or valid='D'
+   		</otherwise>
+    </choose>
   </select>
 </mapper>
