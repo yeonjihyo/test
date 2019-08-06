@@ -41,7 +41,7 @@
 	    		<c:forEach items="${list}" var="board"> 
 		      		<tr>
 				        <td>${board.num}</td>
-				        <td><a href="<%=request.getContextPath()%>/board/display?num=${board.num}">${board.title}</a></td>
+				        <td><a href="<%=request.getContextPath()%>/board/display?num=${board.num}&page=${pageMaker.criteria.page}&type=${pageMaker.criteria.type}&search=${pageMaker.criteria.search}">${board.title}</a></td>
 				        <td>${board.writer}</td>
 				        <td>${board.registered}</td><!-- <td>${board.registeredUntilDay}</td> 날자만나오게하고싶으면 이렇게 호출하면됨  -->
 				        <td>${board.views}</td>

@@ -11,4 +11,6 @@ public interface BoardService {
 	public int getTotalCount(Criteria cri, String valid);
 
 	public void registerBoard(BoardVO bVo);
+
+	public BoardVO getBoard(Integer num);
 }

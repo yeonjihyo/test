@@ -34,7 +34,7 @@ public class BoardController {
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 	//게시판리스트
 	@RequestMapping(value= "/board/list",method=RequestMethod.GET)
-	public ModelAndView boardListGet(ModelAndView mv, Criteria cri) throws Exception{
+	public ModelAndView boardListGet(ModelAndView mv, Criteria cri){
 		String valid="I";
 		int displayPageNum=2;
 		ArrayList<BoardVO> list = boardService.getBoardList(cri,valid);
@@ -47,16 +47,26 @@ public class BoardController {
 	    mv.addObject("pageMaker",pm);
 	    return mv;
 	}
+	//게시글 등록
 	@RequestMapping(value= "/board/register",method=RequestMethod.GET)
-	public ModelAndView boardRegisterGet(ModelAndView mv) throws Exception{
+	public ModelAndView boardRegisterGet(ModelAndView mv){
 		
 	    mv.setViewName("/board/register");
 	    return mv;
 	}
 	@RequestMapping(value= "/board/register",method=RequestMethod.POST)
-	public String boardRegisterPost(BoardVO bVo) throws Exception{
+	public String boardRegisterPost(BoardVO bVo){
 		//System.out.println(bVo);
 		boardService.registerBoard(bVo);
 	    return "redirect:/board/list";
+	}
+	//게시글 상세
+	@RequestMapping(value= "/board/display",method=RequestMethod.GET)
+	public ModelAndView boardDisplayGet(ModelAndView mv,Integer num, Criteria cri){
+		BoardVO board=boardService.getBoard(num);
+	    mv.setViewName("/board/display");
+	    mv.addObject("board",board);
+	    mv.addObject("cri",cri);
+	    return mv;
 	}
 }
