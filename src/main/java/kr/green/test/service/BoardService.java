@@ -9,4 +9,6 @@ public interface BoardService {
 	public ArrayList<BoardVO> getBoardList(Criteria cri, String valid);
 
 	public int getTotalCount(Criteria cri, String valid);
+
+	public void registerBoard(BoardVO bVo);
 }
