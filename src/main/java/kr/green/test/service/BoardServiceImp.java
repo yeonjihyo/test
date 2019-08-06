@@ -60,4 +60,15 @@ public class BoardServiceImp implements BoardService{
 		return false;
 	}
 
+	@Override
+	public void deleteBoard(Integer num) {
+		BoardVO board = boardDao.selectBoard(num);
+		if(board == null){
+			return;
+		}
+		board.setValid("D");
+		boardDao.updateBoard(board);
+		
+	}
+
 }

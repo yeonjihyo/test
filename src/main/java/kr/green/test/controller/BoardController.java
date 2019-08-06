@@ -93,4 +93,13 @@ public class BoardController {
 		}
 	    return "redirect:/board/list";
 	}
+	//
+	@RequestMapping(value= "/board/delete",method=RequestMethod.GET)
+	public ModelAndView boardDeleteGet(ModelAndView mv,Integer num,HttpServletRequest r){
+		if(boardService.isWriter(num, r)) {
+			boardService.deleteBoard(num);
+		}
+	    mv.setViewName("redirect:/board/list");
+	    return mv;
+	}
 }
