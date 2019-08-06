@@ -81,7 +81,9 @@
 	        </li>
 	    </c:if>
 	</ul>
-	<div>
-		<a href="<%=request.getContextPath()%>/board/register"><button class="btn btn-outline-info">등록</button></a>
-	</div>
+	<c:if test="${user ne null}">
+		<div>
+			<a href="<%=request.getContextPath()%>/board/register"><button class="btn btn-outline-info">등록</button></a>
+		</div>
+	</c:if>
 </div>
