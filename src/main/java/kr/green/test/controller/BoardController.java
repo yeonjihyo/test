@@ -36,7 +36,7 @@ public class BoardController {
 	@RequestMapping(value= "/board/list",method=RequestMethod.GET)
 	public ModelAndView boardListGet(ModelAndView mv, Criteria cri) throws Exception{
 		String valid="I";
-		int displayPageNum=10;
+		int displayPageNum=2;
 		ArrayList<BoardVO> list = boardService.getBoardList(cri,valid);
 		int totalCount = boardService.getTotalCount(cri,valid);
 		System.out.println(totalCount);

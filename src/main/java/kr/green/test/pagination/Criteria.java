@@ -13,6 +13,8 @@ public class Criteria {
 	public Criteria() {
 		this.page = 1;
 		this.perPageNum = 10;
+		this.search="";
+		this.type="0";
 	}
 	
 	//getter and setter
