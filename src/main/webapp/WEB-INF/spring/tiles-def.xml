@@ -26,7 +26,7 @@
     </definition>
  
     <!-- (2) -->
-   <definition name="/*/*" extends=".root">      
+   <definition name="/*/*" extends=".root">      <!-- 폴더명/jsp -->
       <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
     </definition>
 </tiles-definitions>
