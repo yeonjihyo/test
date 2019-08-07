@@ -102,11 +102,12 @@ public class BoardController {
 	    return mv;
 	}
 	@RequestMapping(value= "/board/modify",method=RequestMethod.POST)
-	public String boardModifyPost(BoardVO bVo,HttpServletRequest r){
-		//System.out.println(bVo);
-		if(boardService.isWriter(bVo.getNum(),r)){
-			boardService.modifyBoard(bVo);
+	public String boardModifyPost(BoardVO bVo,MultipartFile file2) throws IOException, Exception{
+		if(file2.getOriginalFilename().length() !=0) {
+			String file = UploadFileUtils.uploadFile(uploadPath, file2.getOriginalFilename(),file2.getBytes());
+			bVo.setFile(file);//
 		}
+		boardService.modifyBoard(bVo);
 	    return "redirect:/board/list";
 	}
 	//게시글삭제
